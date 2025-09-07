@@ -13,7 +13,6 @@ using UnityEngine;
 namespace NoDoubleDamage
 {
     [BepInPlugin("neko.NoDoubleDamage", "No Double Damage", "1.0.0")]
-    [BepInProcess("Hollow Knight Silksong.exe")]
     public class NoDoubleDamage : BaseUnityPlugin
     {
         private readonly Harmony harmony = new Harmony("neko.NoDoubleDamage");
@@ -47,7 +46,7 @@ namespace NoDoubleDamage
                     if (originalDamage > 2) {
                         Debug.Log($"Capping damage from {originalDamage} to 1 from {damagingObject.name}");
                     }
-                    damageHero.damageDealt = 1; // Modify the damager's value directly
+                    damageHero.damageDealt = originalDamage - 1; // Modify the damager's value directly
                 }
 
                 // Note: The rest of the original method will now run using the potentially modified damageHero.
